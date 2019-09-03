@@ -3,3 +3,4 @@ config.txt
 .idea
 __pycache__
 testing.py
+config.yaml
