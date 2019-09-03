@@ -10,14 +10,22 @@ CONFIG_FILE = "config.yaml"
 WEB_REQUESTS = "webRequests"
 URL = "url"
 COUNT = "count"
+METHOD = "method"
 
 
 def main():
-    all_set, sdk = get_sdk()
+    all_set, sdk = get_sdk()  # returns a boolean and the sdk if successful
     if all_set:
-        config = get_config(CONFIG_FILE)  # print(config["webRequests"][0]["url"])
+        config = get_config(CONFIG_FILE)  # access value like: config["webRequests"][0]["url"]
         print("Beginning traffic simulation...")
-        simulate_requests("http://example1.com/", "POST", 3, sdk)
+
+        completed_counter = 0  # used in loop
+        while completed_counter < len(config[WEB_REQUESTS]):
+            simulate_requests(config[WEB_REQUESTS][completed_counter][URL],
+                              config[WEB_REQUESTS][completed_counter][METHOD],
+                              config[WEB_REQUESTS][completed_counter][COUNT],
+                              sdk)
+            completed_counter += 1
 
         time.sleep(8)
         oneagent.shutdown()
@@ -45,7 +53,8 @@ def get_config(yaml_config_file):
 def simulate_requests(target, http_method, count, one_agent_sdk):
     completed_count = 0
     while completed_count < count:
-        with one_agent_sdk.trace_outgoing_web_request(target, http_method, headers=None) as outcall:
+        with one_agent_sdk.trace_outgoing_web_request(target, http_method, headers=None):
+            # TODO add some randomness to the duration
             pass
         completed_count += 1
 
