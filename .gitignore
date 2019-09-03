@@ -1,0 +1,4 @@
+config.txt
+/venv
+.idea
+__pycache__
