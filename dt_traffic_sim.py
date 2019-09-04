@@ -1,5 +1,5 @@
 # Simple program to simulate traffic in the Dynatrace UI
-# Original purpose being to practice serve detection customization (via API)
+# Original purpose being to practice service detection customization (via API)
 # NO requests are actually sent out when this program is run (as designed)
 
 import oneagent

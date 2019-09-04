@@ -1,0 +1,13 @@
+webRequests:
+  - url: https://example.com/
+    count: 1
+    method: GET
+  - url: https://example.com/admin
+    count: 4
+    method: POST
+  - url: https://blog.example.com/
+    count: 10
+    method: GET
+  - url: https://example.com/8080
+    count: 3
+    method: POST
