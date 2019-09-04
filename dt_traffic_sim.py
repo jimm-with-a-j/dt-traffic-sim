@@ -5,8 +5,9 @@
 import oneagent
 import yaml
 import time
+import argparse
 
-CONFIG_FILE = "config.yaml"
+# YAML properties
 WEB_REQUESTS = "webRequests"
 URL = "url"
 COUNT = "count"
@@ -14,9 +15,13 @@ METHOD = "method"
 
 
 def main():
-    all_set, sdk = get_sdk()  # returns a boolean and the sdk if successful
+
+    args = return_args()  # args specified in configure_arg_parser() function
+    config_file = args.config_file
+
+    all_set, sdk = get_sdk()  # returns a boolean if init went well and the sdk if successful
     if all_set:
-        config = get_config(CONFIG_FILE)  # access value like: config["webRequests"][0]["url"]
+        config = get_config(config_file)  # access value like: config["webRequests"][0]["url"]
         print("Beginning traffic simulation...")
 
         completed_counter = 0  # used in loop
@@ -40,6 +45,7 @@ def get_sdk():
         all_set = True
     else:
         print("OneAgent initialization failed...")
+        print("Check that OneAgent is running...")
         all_set = False
     return all_set, sdk
 
@@ -54,9 +60,23 @@ def simulate_requests(target, http_method, count, one_agent_sdk):
     completed_count = 0
     while completed_count < count:
         with one_agent_sdk.trace_outgoing_web_request(target, http_method, headers=None):
-            # TODO add some randomness to the duration
+            # this is where the real request would go if we weren't just simulating traffic
             pass
         completed_count += 1
+
+
+def return_args():
+    configured_arg_parser = configure_arg_parser()
+    return configured_arg_parser.parse_args()
+
+
+def configure_arg_parser():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-f", "--file",
+                        help="use the specified config file",
+                        action="store", dest="config_file",
+                        required=True)
+    return parser
 
 
 if __name__ == '__main__':
