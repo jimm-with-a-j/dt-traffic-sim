@@ -2,7 +2,7 @@
 This is a program to simulate transactions within Dynatrace for the purposes of practicing configurations. The initial goal of this is for practicing the use of the [service detection API](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/configuration-api/service-api/detection-rules/).
 
 ## What is required?
-This needs to be run on a Linux or Windows box with Python 3.X and an installed and running OneAgent. You will be warned and the program will exit if none is detected. You also need to have the oneagent sdk module installed and the rest of the requiremnts in requirements.txt.
+This needs to be run on a Linux or Windows box with Python 3.X and an installed and running OneAgent. You will be warned and the program will exit if none is detected. You also need to have the oneagent sdk module installed and the rest of the requirements in requirements.txt.
 
 If you are not a Dynatrace employee you can request a [developer instance](https://www.dynatrace.com/developer/trial/) of Dynatrace.
 
