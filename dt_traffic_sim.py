@@ -78,6 +78,14 @@ def configure_arg_parser():
                         required=True)
     return parser
 
+class SimulationObject():
+
+    def set_type(self):
+        return
+
+
+
+
 
 if __name__ == '__main__':
     main()
