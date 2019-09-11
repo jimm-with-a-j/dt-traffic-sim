@@ -3,6 +3,8 @@ Dynatrace is a powerful software intelligence tool that can be customized quite 
 
 This is a program to simulate transactions within Dynatrace for the purposes of practicing configurations. The initial goal of this project is for practicing the use of the [service detection API](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/configuration-api/service-api/detection-rules/).
 
+See the [repo wiki](https://github.com/jimm-with-a-j/dt-traffic-sim/wiki/Service-Detection-Rules-API-Example) for an example of how you can use this.
+
 ## What is required?
 This needs to be run on a Linux or Windows box with Python 3.X and an installed and running OneAgent. You will be warned and the program will exit if none is detected. You also need to have the oneagent sdk module installed and the rest of the requirements in requirements.txt.
 
