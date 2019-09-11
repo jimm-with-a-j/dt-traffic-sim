@@ -13,6 +13,8 @@ URL = "url"
 COUNT = "count"
 METHOD = "method"
 
+COOL_DOWN_PERIOD = 10  # It seemed to work better when we don't immediately kill the process (seconds)
+
 
 def main():
 
@@ -32,7 +34,9 @@ def main():
                               sdk)
             completed_counter += 1
 
-        time.sleep(8)
+        print("Done. Cooling down...")
+        time.sleep(COOL_DOWN_PERIOD)
+        print("Shutting down...")
         oneagent.shutdown()
 
 
@@ -50,12 +54,6 @@ def get_sdk():
     return all_set, sdk
 
 
-def get_config(yaml_config_file):
-    with open(yaml_config_file) as config_file:
-        config = yaml.load(config_file, Loader=yaml.FullLoader)
-        return config
-
-
 def simulate_requests(target, http_method, count, one_agent_sdk):
     completed_count = 0
     while completed_count < count:
@@ -63,6 +61,12 @@ def simulate_requests(target, http_method, count, one_agent_sdk):
             # this is where the real request would go if we weren't just simulating traffic
             pass
         completed_count += 1
+
+
+def get_config(yaml_config_file):
+    with open(yaml_config_file) as config_file:
+        config = yaml.load(config_file, Loader=yaml.FullLoader)
+        return config
 
 
 def return_args():
@@ -77,14 +81,6 @@ def configure_arg_parser():
                         action="store", dest="config_file",
                         required=True)
     return parser
-
-class SimulationObject():
-
-    def set_type(self):
-        return
-
-
-
 
 
 if __name__ == '__main__':
