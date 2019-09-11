@@ -28,7 +28,7 @@ See [here](https://github.com/Dynatrace/OneAgent-SDK-for-Python) to get an idea 
 `py dt_traffic_sim.py -f <config.yaml>`
 
 ## Anything next?
-Only near term plans are to add the option to simulate web service requests.
+Only near term plans are to add the option to simulate web service requests and the ability to add request attributes.
 
 ## Some More Details
 It seems to use name resolution when deciding if requests are going somewhere internal or external. So for instance after editing the hosts file on my PC I was able to make Dynatrace think some requests going to a public domain were actually going to a local Apache instance I was running. This still showed up as an opaque service though since we were not actually tracing a real request - however this is one area additional functionality can be added down the line.
