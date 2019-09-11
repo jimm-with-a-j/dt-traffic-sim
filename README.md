@@ -1,4 +1,4 @@
-# dt-traffic-sim
+# Dynatrace Traffic Simulator 2019
 Dynatrace is a powerful software intelligence tool that can be customized quite a bit to map to your application and organization more accurately. One challenge with all of these possible configurations is that it can be difficult or undesirable to test these configurations on "real" data. 
 
 This is a program to simulate transactions within Dynatrace for the purposes of practicing configurations. The initial goal of this project is for practicing the use of the [service detection API](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/configuration-api/service-api/detection-rules/).
