@@ -4,3 +4,4 @@ config.txt
 __pycache__
 testing.py
 config.yaml
+build/
