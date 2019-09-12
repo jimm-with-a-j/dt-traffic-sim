@@ -1,7 +1,9 @@
-# dt-traffic-sim
+# Dynatrace Traffic Simulator 2019
 Dynatrace is a powerful software intelligence tool that can be customized quite a bit to map to your application and organization more accurately. One challenge with all of these possible configurations is that it can be difficult or undesirable to test these configurations on "real" data. 
 
 This is a program to simulate transactions within Dynatrace for the purposes of practicing configurations. The initial goal of this project is for practicing the use of the [service detection API](https://www.dynatrace.com/support/help/extend-dynatrace/dynatrace-api/configuration-api/service-api/detection-rules/).
+
+See the [repo wiki](https://github.com/jimm-with-a-j/dt-traffic-sim/wiki/Service-Detection-Rules-API-Example) for an example of how you can use this.
 
 ## What is required?
 This needs to be run on a Linux or Windows box with Python 3.X and an installed and running OneAgent. You will be warned and the program will exit if none is detected. You also need to have the oneagent sdk module installed and the rest of the requirements in requirements.txt.
@@ -26,4 +28,7 @@ See [here](https://github.com/Dynatrace/OneAgent-SDK-for-Python) to get an idea 
 `py dt_traffic_sim.py -f <config.yaml>`
 
 ## Anything next?
-Only near term plans are to add the option to simulate web service requests.
+Only near term plans are to add the option to simulate web service requests and the ability to add request attributes.
+
+## Some More Details
+It seems to use name resolution when deciding if requests are going somewhere internal or external. So for instance after editing the hosts file on my PC I was able to make Dynatrace think some requests going to a public domain were actually going to a local Apache instance I was running. This still showed up as an opaque service though since we were not actually tracing a real request - however this is one area additional functionality can be added down the line.
